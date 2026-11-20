@@ -1,0 +1,28 @@
+---
+description: Contexto del storefront e-commerce (Next.js headless)
+alwaysApply: true
+---
+
+# ecommerce_front — project
+
+- **STACK_ID:** `frontend-nextjs` (headless; API Spring Boot externa)
+- **Pin:** Node 24.21.0 · Next.js 16.3.8 · React 19.3.0 · TS 5.9.x · Tailwind 4.3.3
+- **UI:** shadcn/ui · Zod · TanStack Query 5.x · Culqi JS (solo tokenización)
+
+## Capas (FSD simplificado)
+
+```
+src/app/        → rutas, layouts, pages delgadas (composición)
+src/features/   → dominio UI (catalog, cart, checkout, shipping, campaigns, orders, auth)
+src/shared/     → ui, lib (apiClient), config, types — sin reglas de negocio
+src/entities/   → modelos de lectura del contrato API (opcional)
+```
+
+## Límites del agente
+
+- Next.js **pinta y orquesta UI**. Estado de negocio → Spring Boot `/api/v1`.
+- `app/api/` = BFF mínimo (cookies httpOnly, proxy, revalidate). **Prohibido** stock, cupones, cargos, secretos Culqi.
+- Culqi: token en browser; cargo/webhook/secret → solo backend.
+- No Redis en día 1. No JPA/Prisma/ORM en este repo. No monolito full-stack.
+- No inventar endpoints; alinear `features/*` ↔ módulos Spring (`catalog`, `cart`, `payment`, etc.).
+- Responder en **español**. Solo código/reglas pedidos; sin commits salvo petición explícita.

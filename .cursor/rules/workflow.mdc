@@ -1,0 +1,38 @@
+---
+description: Flujo de trabajo, comandos y calidad del storefront
+alwaysApply: true
+---
+
+# workflow — ecommerce_front
+
+## Runtime
+
+- Usar **Node 24.21.0** (`nvm use` / `.nvmrc`). No desarrollar en Node 20.
+
+## Comandos (cuando exista package.json)
+
+| Acción | Comando |
+|--------|---------|
+| Dev | `npm run dev` (o `pnpm dev`) |
+| Build | `npm run build` |
+| Lint | `npm run lint` |
+| Type-check | `npx tsc --noEmit` |
+
+## Calidad antes de dar por cerrado un cambio
+
+1. Lint + type-check en archivos tocados.
+2. Verificar que no se metió dominio de negocio en `app/api` ni secretos Culqi.
+3. Server Component salvo justificación de Client Component.
+
+## Git
+
+- Commits **solo** si el usuario lo pide.
+- Mensajes concisos en español o inglés según historial del repo; enfocar el *porqué*.
+- No `push --force` a main/master; no alterar git config; no `--no-verify`.
+
+## Alcance del agente
+
+- Este repo = **solo frontend**. Backend Spring / SQL Server / SPs → fuera de alcance salvo contrato API.
+- No instalar dependencias globales innecesarias; preferir deps de proyecto.
+- No crear docs (`README`, `docs/`) ni scaffolding extra salvo petición explícita.
+- Comunicación: español, directa y breve.

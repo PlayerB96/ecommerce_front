@@ -1,0 +1,48 @@
+---
+description: Estilo y patrones TypeScript/React/Next del storefront
+globs: src/**/*.{ts,tsx,css}
+alwaysApply: false
+---
+
+# code-style — frontend-nextjs
+
+## General
+
+- TypeScript estricto. App Router exclusivo (no Pages Router).
+- Server Components por defecto; `"use client"` solo con interacción/estado/browser APIs.
+- Tailwind 4 exclusivo para estilos. Preferir tokens/CSS variables del design system.
+- Zod en el borde (forms + parse de respuestas API). TanStack Query para cache UI cliente.
+
+## Naming
+
+| Qué | Convención |
+|-----|------------|
+| Componentes / archivos UI | `PascalCase.tsx` |
+| Hooks | `useCamelCase.ts` |
+| API clients / utils | `camelCase.ts` |
+| Features | carpeta kebab o nombre dominio (`catalog/`, `checkout/`) |
+| Route groups | `(storefront)`, `(admin)` |
+
+## Estructura por feature
+
+```
+features/<dominio>/
+  components/  hooks/  api/  types/  index.ts
+```
+
+Pages en `app/` solo componen; lógica de UI/datos del dominio vive en `features/`.
+
+## ✅ Hacer
+
+- Un `apiClient` tipado en `shared/lib` hacia Spring Boot.
+- Fetch server desde Server Components vía `features/*/api`.
+- Cliente (carrito/checkout Culqi) vía hooks + TanStack Query.
+- Colocation: UI solo de una ruta → `_components/` bajo esa ruta si aplica.
+
+## ❌ Evitar
+
+- `components/` gigante sin dominio.
+- Services en Next que calculen stock, cupones, precios finales o pagos.
+- Lógica de negocio / secretos en `app/api` route handlers.
+- Clean/Hexagonal pesada en frontend; duplicar reglas de Stored Procedures.
+- `useMemo` / `useCallback` por defecto (seguir guía React Compiler del repo si existe).
