@@ -1,0 +1,60 @@
+---
+description: SEO obligatorio del storefront — estructura, SSR y contrato indexable
+alwaysApply: true
+---
+
+# seo — ecommerce_front
+
+El SEO es **prioridad de producto**. Toda feature nueva debe preservar indexación y la estructura acordada. Landing + tienda viven en el **mismo** Next.js/dominio.
+
+## Estructura que no se rompe
+
+```
+src/app/(storefront)/     → home, categoria/[slug], producto/[slug] (indexables)
+                          → carrito, checkout (noindex)
+src/app/robots.ts
+src/app/sitemap.ts        → alimentado por catalogApi (nunca hardcodear solo estáticos)
+src/features/seo/         → buildMetadata, jsonLd
+src/features/catalog/api/ → ÚNICA lectura de catálogo (mock | http)
+src/entities/             → Zod = contrato Spring
+```
+
+## Obligatorio en páginas indexables (home, PLP, PDP)
+
+- **Server Components** con HTML completo (nombre, precio, descripción, imágenes). Prohibido catálogo solo con `useEffect` + fetch cliente.
+- Datos solo vía `features/catalog/api` — no `fetch` directo en `page.tsx`.
+- Metadata con `features/seo/buildMetadata` (title, description, canonical, Open Graph).
+- JSON-LD (`Product`, `BreadcrumbList`, `Organization`/`WebSite`) vía `features/seo/jsonLd`.
+- Un **H1** por página; breadcrumbs + enlaces internos a categoría/relacionados.
+- Imágenes con `next/image`, `alt` real, `sizes` correctos; `priority` solo en LCP.
+- URLs estables: `/producto/[slug]`, `/categoria/[slug]` — slugs desde el contrato, no IDs en URL pública.
+
+## Indexación selectiva
+
+| Ruta | robots |
+|------|--------|
+| `/`, `/categoria/*`, `/producto/*`, marketing | index |
+| `/carrito`, `/checkout`, `/cuenta` | `noindex` |
+
+Mantener `robots.ts` alineado. No meter carrito/checkout en `sitemap.xml`.
+
+## Anti-patrones (rechazar en PRs / cambios)
+
+```tsx
+// ❌ BAD — catálogo no indexable
+"use client";
+useEffect(() => { fetch("/api/...").then(setProducts) }, []);
+
+// ✅ GOOD — SSR vía adapter
+const product = await getProductBySlug(slug);
+```
+
+- ❌ Duplicar dominio landing vs shop sin 301.
+- ❌ Indexar `?sort=` / filtros sin canonical a URL limpia.
+- ❌ Thin content de categoría sin H1/copy/productos en HTML.
+- ❌ Saltarse Zod/entities al cablear Spring (el shape SEO depende del contrato).
+- ❌ Lógica de stock/cupones/cargos en el front “para SEO”.
+
+## Al cablear backend
+
+Solo cambiar adapter (`CATALOG_DATA_SOURCE=http` + `API_BASE_URL`). **No reescribir** pages SEO. Ver `features/catalog/api/CABLEADO.md`.

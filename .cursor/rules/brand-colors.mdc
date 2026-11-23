@@ -1,0 +1,39 @@
+---
+description: Paleta La Número 1 — únicos colores permitidos en el ecommerce
+alwaysApply: true
+---
+
+# brand-colors — La Número 1
+
+Paleta **cerrada**. No usar zinc, slate, gray, purple, emerald ni hex inventados.
+
+| Token | Hex | Rol |
+|-------|-----|-----|
+| `brand-white` | `#FFFFFF` | Predominante: fondos, canvas del commerce |
+| `brand-black` | `#000000` | Texto, bordes (con opacidad), superficies invertidas |
+| `brand-orange` | `#F88028` | Acento / CTA (swoosh del logo) |
+| `brand-cyan` | `#00A8E8` | Marca (fondo versión logo); uso **escaso** |
+
+Fuente de verdad en código: `src/shared/config/brand.ts` + `src/app/globals.css` (`@theme`).
+
+## Uso Tailwind
+
+```tsx
+// ✅ GOOD
+className="bg-brand-white text-brand-black"
+className="bg-brand-orange text-brand-white"      // CTA
+className="bg-brand-cyan text-brand-white"        // momento marca
+className="text-brand-black/60 border-brand-black/15" // muted = opacidad del black
+
+// ❌ BAD
+className="bg-zinc-50 text-zinc-900 border-gray-200"
+className="bg-purple-600" // o cualquier color fuera de la tabla
+```
+
+## Reglas
+
+- Fondo del sitio: **blanco**. Negro/cian solo en bloques puntuales (hero marca, footer invertido, logo).
+- CTAs primarios: **naranja** (`bg-brand-orange`), no cian ni negro por defecto.
+- Texto muted / bordes: `brand-black` con opacidad (`/60`, `/15`) — no grises de Tailwind.
+- Imágenes de producto pueden tener colores propios; **UI chrome** solo paleta marca.
+- Al añadir UI nueva: tokens `brand-*` o variables CSS `--brand-*`. Actualizar `brand.ts` si marketing aprueba un hex nuevo (no inventar en componentes).

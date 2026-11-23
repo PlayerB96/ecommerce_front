@@ -18,6 +18,18 @@ src/shared/     → ui, lib (apiClient), config, types — sin reglas de negocio
 src/entities/   → modelos de lectura del contrato API (opcional)
 ```
 
+## Marca / color (clave)
+
+- Marca: **La Número 1**. Paleta cerrada: blanco `#FFFFFF`, negro `#000000`, naranja `#F88028`, cian `#00A8E8`.
+- Predominancia **blanca** en el commerce. Ver `brand-colors.mdc` + `shared/config/brand.ts`.
+- Prohibido zinc/gray/otros hex en UI.
+
+## SEO (clave)
+
+- SEO es prioridad: SSR indexable, metadata/JSON-LD, slugs, sitemap/robots.
+- Respetar siempre la regla `seo.mdc` y la estructura `(storefront)` + `features/seo` + `features/catalog/api`.
+- Landing + ecommerce en el **mismo** dominio/código. No partir autoridad en otro repo sin justificación.
+
 ## Límites del agente
 
 - Next.js **pinta y orquesta UI**. Estado de negocio → Spring Boot `/api/v1`.

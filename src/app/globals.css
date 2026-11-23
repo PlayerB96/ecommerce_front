@@ -1,26 +1,34 @@
 @import "tailwindcss";
 
+/*
+  Paleta La Número 1 — SOLO estos colores (y opacidades del mismo hex).
+  white #FFFFFF | black #000000 | orange #F88028 | cyan #00A8E8
+*/
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --brand-white: #ffffff;
+  --brand-black: #000000;
+  --brand-orange: #f88028;
+  --brand-cyan: #00a8e8;
+
+  --background: var(--brand-white);
+  --foreground: var(--brand-black);
 }
 
 @theme inline {
+  --color-brand-white: var(--brand-white);
+  --color-brand-black: var(--brand-black);
+  --color-brand-orange: var(--brand-orange);
+  --color-brand-cyan: var(--brand-cyan);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--brand-white);
+  color: var(--brand-black);
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
 }
