@@ -1,115 +1,169 @@
 import type { Category } from "@/entities/category";
 import type { Product } from "@/entities/product";
 
-const electronica: Category = {
-  id: "cat-electronica",
-  slug: "electronica",
-  name: "Electrónica",
+const hombre: Category = {
+  id: "cat-hombre",
+  slug: "hombre",
+  name: "Hombre",
   description:
-    "Audífonos, TV y accesorios con envío a todo el Perú. Compra online con garantía.",
+    "Polos, camisas y prendas para hombre. Estilo casual y formal con envío a todo el Perú.",
 };
 
-const hogar: Category = {
-  id: "cat-hogar",
-  slug: "hogar",
-  name: "Hogar",
+const mujer: Category = {
+  id: "cat-mujer",
+  slug: "mujer",
+  name: "Mujer",
   description:
-    "Productos para la casa: parrillas, textiles y más. Entrega confiable en Perú.",
+    "Vestidos, blusas y looks para mujer. Tendencias y básicos con envío nacional.",
 };
 
-export const mockCategories: Category[] = [electronica, hogar];
+const calzado: Category = {
+  id: "cat-calzado",
+  slug: "calzado",
+  name: "Calzado",
+  description:
+    "Zapatillas, botas y zapatos. Comodidad y estilo para cada ocasión.",
+};
+
+export const mockCategories: Category[] = [hombre, mujer, calzado];
 
 export const mockProducts: Product[] = [
   {
     id: "prod-1",
-    slug: "auriculares-pro-bluetooth",
-    name: "Auriculares Pro Bluetooth",
-    shortDescription: "Sonido nítido, 30 h de batería y cancelación de ruido.",
+    slug: "polo-algodon-clasico",
+    name: "Polo de algodón clásico",
+    shortDescription: "Corte regular, 100% algodón peinado, ideal para el día a día.",
     description:
-      "Auriculares over-ear con Bluetooth 5.3, cancelación activa de ruido y hasta 30 horas de autonomía. Ideales para oficina, viajes y uso diario. Incluye estuche y cable USB-C.",
+      "Polo de algodón peinado con cuello rib y acabado suave. Perfecto para looks casuales. Disponible en tallas S a XL. Lavable en máquina.",
+    price: 89,
+    currency: "PEN",
+    availability: "InStock",
+    images: [
+      {
+        url: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&q=80",
+        alt: "Polo de algodón blanco clásico",
+        width: 800,
+        height: 800,
+      },
+    ],
+    category: hombre,
+    brand: "La Número 1",
+    sku: "POL-ALG-01",
+    updatedAt: "2026-11-01T10:00:00.000Z",
+  },
+  {
+    id: "prod-2",
+    slug: "camisa-oxford-slim",
+    name: "Camisa Oxford slim",
+    shortDescription: "Oxford ligero, corte slim, botones contrastados.",
+    description:
+      "Camisa Oxford de manga larga con corte slim y cuello button-down. Ideal para oficina o salidas. Planchado fácil.",
+    price: 149,
+    currency: "PEN",
+    availability: "InStock",
+    images: [
+      {
+        url: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=800&q=80",
+        alt: "Camisa Oxford slim azul claro",
+        width: 800,
+        height: 800,
+      },
+    ],
+    category: hombre,
+    brand: "La Número 1",
+    sku: "CAM-OXF-02",
+    updatedAt: "2026-11-05T12:00:00.000Z",
+  },
+  {
+    id: "prod-3",
+    slug: "vestido-midi-floral",
+    name: "Vestido midi floral",
+    shortDescription: "Silueta midi, tela fluida, estampado floral.",
+    description:
+      "Vestido midi con estampado floral y cintura marcada. Ligero y cómodo para primavera-verano. Cierre lateral invisible.",
     price: 199,
     currency: "PEN",
     availability: "InStock",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80",
-        alt: "Auriculares Pro Bluetooth negros sobre fondo claro",
+        url: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800&q=80",
+        alt: "Vestido midi floral en maniquí",
         width: 800,
         height: 800,
       },
     ],
-    category: electronica,
-    brand: "NovaAudio",
-    sku: "AUD-PRO-001",
-    updatedAt: "2026-11-01T10:00:00.000Z",
-  },
-  {
-    id: "prod-2",
-    slug: "television-55-4k",
-    name: "Televisión 55 pulgadas 4K",
-    shortDescription: "Smart TV 4K UHD con HDR y apps de streaming.",
-    description:
-      "Pantalla LED 55\" 4K UHD con HDR10, sistema smart integrado y control por voz. Perfecta para cine en casa. Montaje en pared compatible (soporte no incluido).",
-    price: 1899,
-    currency: "PEN",
-    availability: "InStock",
-    images: [
-      {
-        url: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=800&q=80",
-        alt: "Televisión 55 pulgadas 4K encendida en sala",
-        width: 800,
-        height: 800,
-      },
-    ],
-    category: electronica,
-    brand: "VistaTech",
-    sku: "TV-55-4K",
-    updatedAt: "2026-11-05T12:00:00.000Z",
-  },
-  {
-    id: "prod-3",
-    slug: "parrilla-gas-4-quemadores",
-    name: "Parrilla a gas 4 quemadores",
-    shortDescription: "Parrilla para 4 personas, encendido electrónico.",
-    description:
-      "Parrilla a gas con 4 quemadores, tapa con termómetro y bandeja recolectora. Estructura resistente para uso en terraza o jardín. Fácil de limpiar.",
-    price: 459,
-    currency: "PEN",
-    availability: "InStock",
-    images: [
-      {
-        url: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=80",
-        alt: "Parrilla a gas con comida asada",
-        width: 800,
-        height: 800,
-      },
-    ],
-    category: hogar,
-    brand: "CasaFuego",
-    sku: "PAR-GAS-4",
+    category: mujer,
+    brand: "La Número 1",
+    sku: "VES-MID-03",
     updatedAt: "2026-10-20T09:00:00.000Z",
   },
   {
     id: "prod-4",
-    slug: "sudadera-algodon-unisex",
-    name: "Sudadera de algodón unisex",
-    shortDescription: "Tela suave, corte regular, varios colores.",
+    slug: "blusa-seda-lisa",
+    name: "Blusa de seda lisa",
+    shortDescription: "Caída suave, manga corta, cuello redondo.",
     description:
-      "Sudadera unisex 80% algodón / 20% poliéster, capucha ajustable y bolsillo canguro. Lavable en máquina. Disponible en tallas S a XL (consultar stock por talla al cablear inventario).",
-    price: 129,
+      "Blusa lisa con caída tipo seda y manga corta. Combina con pantalón o falda. Ideal para looks elegantes diurnos.",
+    price: 169,
     currency: "PEN",
     availability: "InStock",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=800&q=80",
-        alt: "Sudadera de algodón unisex color gris",
+        url: "https://images.unsplash.com/photo-1564257631407-4deb1f99d992?w=800&q=80",
+        alt: "Blusa de seda lisa blanca",
         width: 800,
         height: 800,
       },
     ],
-    category: hogar,
-    brand: "UrbanSoft",
-    sku: "SUD-ALG-U",
+    category: mujer,
+    brand: "La Número 1",
+    sku: "BLU-SED-04",
     updatedAt: "2026-11-10T15:30:00.000Z",
+  },
+  {
+    id: "prod-5",
+    slug: "zapatillas-urbanas-blancas",
+    name: "Zapatillas urbanas blancas",
+    shortDescription: "Suela liviana, plantilla acolchada, uso diario.",
+    description:
+      "Zapatillas urbanas de cuero sintético blanco con suela de goma. Cómodas para caminar todo el día. Limpiar con paño húmedo.",
+    price: 229,
+    currency: "PEN",
+    availability: "InStock",
+    images: [
+      {
+        url: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80",
+        alt: "Zapatillas urbanas blancas y rojas",
+        width: 800,
+        height: 800,
+      },
+    ],
+    category: calzado,
+    brand: "La Número 1",
+    sku: "ZAP-URB-05",
+    updatedAt: "2026-11-12T11:00:00.000Z",
+  },
+  {
+    id: "prod-6",
+    slug: "botas-cuero-mujer",
+    name: "Botas de cuero mujer",
+    shortDescription: "Caña media, cierre lateral, suela antideslizante.",
+    description:
+      "Botas de cuero para mujer con caña media y cierre lateral. Ideales para otoño-invierno. Forro interior suave.",
+    price: 289,
+    currency: "PEN",
+    availability: "InStock",
+    images: [
+      {
+        url: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=800&q=80",
+        alt: "Botas de cuero negras para mujer",
+        width: 800,
+        height: 800,
+      },
+    ],
+    category: calzado,
+    brand: "La Número 1",
+    sku: "BOT-CUE-06",
+    updatedAt: "2026-11-08T08:00:00.000Z",
   },
 ];

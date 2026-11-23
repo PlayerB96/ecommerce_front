@@ -18,11 +18,12 @@ src/shared/     → ui, lib (apiClient), config, types — sin reglas de negocio
 src/entities/   → modelos de lectura del contrato API (opcional)
 ```
 
-## Marca / color (clave)
+## Marca / color / tipo (clave)
 
 - Marca: **La Número 1**. Paleta cerrada: blanco `#FFFFFF`, negro `#000000`, naranja `#F88028`, cian `#00A8E8`.
+- Tipografía cerrada: Montserrat (`font-sans`) + Libre Baskerville (`font-serif`). Ver `brand-typography.mdc`.
 - Predominancia **blanca** en el commerce. Ver `brand-colors.mdc` + `shared/config/brand.ts`.
-- Prohibido zinc/gray/otros hex en UI.
+- Prohibido zinc/gray/otros hex u otras fuentes en UI.
 
 ## SEO (clave)
 

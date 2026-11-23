@@ -28,14 +28,14 @@ export function ProductCard({ product }: ProductCardProps) {
       <div className="flex flex-col gap-1">
         <Link
           href={`/producto/${product.slug}`}
-          className="font-medium text-brand-black hover:text-brand-orange hover:underline"
+          className="font-sans text-sm font-semibold uppercase tracking-[0.08em] text-brand-black hover:text-brand-orange"
         >
           {product.name}
         </Link>
-        <p className="line-clamp-2 text-sm text-brand-black/60">
+        <p className="line-clamp-2 font-serif text-sm italic text-brand-black/55">
           {product.shortDescription}
         </p>
-        <p className="text-base font-semibold text-brand-black">
+        <p className="font-sans text-base font-medium text-brand-black">
           S/ {product.price.toFixed(2)}
         </p>
       </div>

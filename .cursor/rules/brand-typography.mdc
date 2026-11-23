@@ -1,0 +1,28 @@
+---
+description: Tipografías La Número 1 — solo Montserrat y Libre Baskerville
+alwaysApply: true
+---
+
+# brand-typography — La Número 1
+
+Tipografía **cerrada** (2 familias). Fuente de verdad: `brand.fonts` en `shared/config/brand.ts` + `next/font` en `app/layout.tsx`.
+
+| Token Tailwind | Familia | Uso |
+|----------------|---------|-----|
+| `font-sans` | Montserrat | UI, nav, títulos, nombres, precios, CTAs |
+| `font-serif` | Libre Baskerville | Acento: placeholder búsqueda, subtítulos suaves (`italic`) |
+
+## ✅ Hacer
+
+```tsx
+className="font-sans uppercase tracking-[0.14em]"  // nav / títulos sección
+className="font-serif italic text-brand-black/60" // subtítulo / búsqueda
+```
+
+## ❌ Evitar
+
+- Geist, Inter, Roboto, Arial, system-ui como familia principal en componentes
+- `font-mono`, Google Fonts nuevas, `@font-face` ad hoc
+- Más de estas 2 familias
+
+Body y layout ya cargan solo estas fuentes. No importar otras desde `next/font/google`.

@@ -16,6 +16,10 @@ Paleta **cerrada**. No usar zinc, slate, gray, purple, emerald ni hex inventados
 
 Fuente de verdad en código: `src/shared/config/brand.ts` + `src/app/globals.css` (`@theme`).
 
+**Logo:** solo `brand.logoSrc` → `/brand/logo.png` (cian + naranja sobre blanco). Prohibido `logo-cyan`, `logo-white` u otras variantes.
+
+**Tipografía:** ver `brand-typography.mdc` — solo `font-sans` (Montserrat) y `font-serif` (Libre Baskerville).
+
 ## Uso Tailwind
 
 ```tsx

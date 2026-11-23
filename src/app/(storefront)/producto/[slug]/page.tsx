@@ -11,6 +11,7 @@ import {
   JsonLdScript,
   productJsonLd,
 } from "@/features/seo/jsonLd";
+import { siteContainerClass } from "@/shared/ui/siteContainer";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -66,7 +67,7 @@ export default async function ProductPage({ params }: PageProps) {
         )}
       />
 
-      <div className="mx-auto max-w-6xl bg-brand-white px-4 py-10 sm:px-6">
+      <div className={`${siteContainerClass} bg-brand-white py-10`}>
         <Breadcrumbs items={crumbs} />
 
         <div className="mt-8 grid gap-10 lg:grid-cols-2">

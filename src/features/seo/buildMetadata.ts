@@ -10,7 +10,7 @@ function absoluteUrl(path: string) {
 
 export function buildHomeMetadata(): Metadata {
   const title = `${env.siteName} | Tienda online Perú`;
-  const description = `Compra online en ${env.siteName}. Electrónica, hogar y más con envío a todo el Perú.`;
+  const description = `Compra online en ${env.siteName}. Prendas, calzado y moda con envío a todo el Perú.`;
 
   return {
     title,

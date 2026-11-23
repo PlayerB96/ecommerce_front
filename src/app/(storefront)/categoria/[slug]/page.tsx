@@ -11,6 +11,7 @@ import {
   categoryJsonLd,
   JsonLdScript,
 } from "@/features/seo/jsonLd";
+import { siteContainerClass } from "@/shared/ui/siteContainer";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -57,7 +58,7 @@ export default async function CategoryPage({ params }: PageProps) {
         )}
       />
 
-      <div className="mx-auto max-w-6xl bg-brand-white px-4 py-10 sm:px-6">
+      <div className={`${siteContainerClass} bg-brand-white py-10`}>
         <Breadcrumbs items={crumbs} />
         <header className="mt-6 max-w-2xl">
           <h1 className="text-3xl font-semibold tracking-tight text-brand-black">

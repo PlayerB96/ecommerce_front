@@ -1,16 +1,20 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Libre_Baskerville, Montserrat } from "next/font/google";
 import { env } from "@/shared/config/env";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+/** Únicas tipografías permitidas — ver brand.fonts */
+const brandSans = Montserrat({
+  variable: "--font-brand-sans",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const brandSerif = Libre_Baskerville({
+  variable: "--font-brand-serif",
   subsets: ["latin"],
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -19,7 +23,7 @@ export const metadata: Metadata = {
     default: `${env.siteName} | Tienda online Perú`,
     template: `%s | ${env.siteName}`,
   },
-  description: `Compra online en ${env.siteName}. Electrónica, hogar y más con envío a todo el Perú.`,
+  description: `Compra online en ${env.siteName}. Prendas, calzado y moda con envío a todo el Perú.`,
   openGraph: {
     siteName: env.siteName,
     locale: "es_PE",
@@ -31,7 +35,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="es-PE"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${brandSans.variable} ${brandSerif.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-brand-white font-sans text-brand-black">
         {children}

@@ -3,6 +3,10 @@
 /*
   Paleta La Número 1 — SOLO estos colores (y opacidades del mismo hex).
   white #FFFFFF | black #000000 | orange #F88028 | cyan #00A8E8
+
+  Tipografía — SOLO:
+  font-sans → Montserrat
+  font-serif → Libre Baskerville
 */
 :root {
   --brand-white: #ffffff;
@@ -23,12 +27,12 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-brand-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-brand-serif), ui-serif, Georgia, serif;
 }
 
 body {
   background: var(--brand-white);
   color: var(--brand-black);
-  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-brand-sans), ui-sans-serif, system-ui, sans-serif;
 }

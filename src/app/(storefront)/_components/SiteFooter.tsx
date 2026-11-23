@@ -1,14 +1,17 @@
 import { env } from "@/shared/config/env";
+import { siteContainerClass } from "@/shared/ui/siteContainer";
 import Link from "next/link";
 
 export function SiteFooter() {
   return (
     <footer className="mt-auto border-t border-brand-black/10 bg-brand-white">
-      <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-10 sm:flex-row sm:items-start sm:justify-between sm:px-6">
+      <div
+        className={`${siteContainerClass} flex flex-col gap-4 py-10 sm:flex-row sm:items-start sm:justify-between`}
+      >
         <div>
           <p className="font-semibold text-brand-black">{env.siteName}</p>
           <p className="mt-1 max-w-sm text-sm text-brand-black/60">
-            Tienda online en Perú. Envíos, cambios y atención al cliente.
+            Moda y calzado online en Perú. Envíos, cambios y atención al cliente.
           </p>
         </div>
         <nav
